@@ -41,7 +41,7 @@ h2 { color: var(--navy); font-size: 1.3rem; }
   position: absolute;
   top: 45%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  translate: -50% -50%;
 
   width: 48px;
   height: 48px;
@@ -50,9 +50,14 @@ h2 { color: var(--navy); font-size: 1.3rem; }
   border-top-color: var(--navy);   /* un seul côté coloré : on verra la rotation */
 
   /* TODO 1.2 : appliquer l'animation "tourner" (1s, linear, infinite) */
+  animation: tourner 1s linear infinite;
 }
 
 /* TODO 1.1 : écrire @keyframes tourner (de 0deg à 360deg) */
+@keyframes tourner {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
 /* --- Trois points --- */
 .dots {
@@ -69,13 +74,24 @@ h2 { color: var(--navy); font-size: 1.3rem; }
   border-radius: 50%;
   background: var(--navy);
   /* TODO 1.5 : appliquer l'animation "rebondir" (0.9s, ease-in-out, infinite) */
+  animation: rebondir 0.9s ease-in-out infinite;
 }
 
 /* TODO 1.4 : écrire @keyframes rebondir
    0%, 80%, 100% : en bas, opacité 0.4
    40%           : 10px plus haut, opacité 1 */
+@keyframes rebondir {
+   0%, 80%, 100% { transform: translateY(0px); opacity: 0.4; }
+   40% { transform: translateY(-10px); opacity: 1; }
+}
 
 /* TODO 1.6 : décaler le départ du 2e et du 3e point */
+.dots :nth-child(2) {
+   animation-delay: 0.15s;
+}
+.dots :nth-child(3) {
+   animation-delay: 0.3s;
+}
 
 /* =========================================================
    NIVEAU 2 — APPARITION

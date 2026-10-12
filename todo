@@ -1,0 +1,7 @@
+1.1. au niveau de la rotation, le spinner accélère puis décelère au proximité de sa position initale
+linear est bon choix pour une rotation continue car le spinner effectue une bonne animation sans pause avec une vitesse constante
+
+1.2. un transform dans keyframes ecrase l'existant dans la règle .spinner
+
+1.3. parce qu'on a défini pour chaque "dots" un delai de départ d'une différence de 0.15s, ce qui rend une impréssion de vague
+
