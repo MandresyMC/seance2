@@ -104,13 +104,23 @@ h2 { color: var(--navy); font-size: 1.3rem; }
 /* TODO 2.1 : écrire @keyframes apparaitre
    Seulement un "from" : opacité 0 et 20px plus bas.
    Pas de "to" : l'élément revient à son état normal. */
+@keyframes apparaitre {
+  from { opacity: 0; transform: translateY(20px); }
+}
 
 /* TODO 2.2 : quand la grille a la classe .is-playing,
    chaque .reveal joue "apparaitre" (0.5s, ease-out) */
+.is-playing .reveal {
+   animation: apparaitre 0.5s ease-out;
 
-/* TODO 2.3 : décaler chaque carte de 100ms × son rang (--i) avec calc() */
+   /* TODO 2.3 : décaler chaque carte de 100ms × son rang (--i) avec calc() */
+   animation-delay: calc(var(--i) * 100ms);
 
-/* TODO 2.4 : régler animation-fill-mode (voir l'énoncé) */
+   /* TODO 2.4 : régler animation-fill-mode (voir l'énoncé) */
+   animation-fill-mode: forwards;
+}
+
+
 
 /* =========================================================
    NIVEAU 3 — ERREUR DE SAISIE
@@ -127,9 +137,18 @@ h2 { color: var(--navy); font-size: 1.3rem; }
    0%, 100% : position normale
    20%, 60% : 8px à gauche
    40%, 80% : 8px à droite */
+@keyframes secouer {
+   0%, 100% { transform: translateX(0); }
+   20%, 60% { transform: translateX(-8px); }
+   40%, 80% { transform: translateX(8px); }
+}
 
 /* TODO 3.2 : quand .field a la classe .is-error,
    l'input devient rouge et joue "secouer" (0.4s, ease-in-out) */
+.field.is-error input {
+   border: 2px solid var(--red);
+   animation: secouer 0.4s ease-in-out;
+}
 
 /* =========================================================
    BONUS — MACHINE À ÉCRIRE
@@ -141,9 +160,18 @@ h2 { color: var(--navy); font-size: 1.3rem; }
   white-space: nowrap;
   overflow: hidden;
   /* TODO B.1 : largeur de départ 0, et un curseur (border-right) */
+  /*width: max-content;   /* à supprimer quand vous commencez le bonus */
+  width: 0;
+  border-right: 3px solid var(--navy);
   /* TODO B.2 : deux animations : "taper" et "clignoter" */
-  width: max-content;   /* à supprimer quand vous commencez le bonus */
+  animation: taper 2.4s steps(24) forwards, clignoter 0.8s steps(1) infinite;
 }
 
 /* TODO B.3 : @keyframes taper (largeur jusqu'à 24ch) */
+@keyframes taper {
+   to { width: 24ch; color: var(--red) }
+}
 /* TODO B.4 : @keyframes clignoter (le curseur disparaît à 50 %) */
+@keyframes clignoter {
+   50% { border-color: transparent; }
+}

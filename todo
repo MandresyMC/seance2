@@ -1,7 +1,14 @@
-1.1. au niveau de la rotation, le spinner accélère puis décelère au proximité de sa position initale
+1. au niveau de la rotation, le spinner accélère puis décelère au proximité de sa position initale
 linear est bon choix pour une rotation continue car le spinner effectue une bonne animation sans pause avec une vitesse constante
 
-1.2. un transform dans keyframes ecrase l'existant dans la règle .spinner
+2. un transform dans keyframes ecrase l'existant dans la règle .spinner
 
-1.3. parce qu'on a défini pour chaque "dots" un delai de départ d'une différence de 0.15s, ce qui rend une impréssion de vague
+3. parce qu'on a défini pour chaque "dots" un delai de départ d'une différence de 0.15s, ce qui rend une impréssion de vague
 
+4. pour une animation fluide; ease-in dégage une animation lente et fatiguante aux yeux, contrairement à ease-out
+
+5. avec backwards, pendant le délai, l'élément prend déjà le style défini au début de l'animation (from ou 0%).
+
+6. car la fonction restart supprime la classe et force le navigateur a oublié l'animation, donc à chaque mdp incorrect, le navigateur relie l'animation et le champ secoue à chaque fois; par contre avec classList.add, on ajoute juste la classe is-error, l'animation c'est une fois et ne se fait plus
+
+7. 24ch et steps(24) parce que la largeur du texte augmente de 24ch par tick, donc avec steps(24), ça donne une impression d'écrire, une impression realiste; si on utilise linear, le typewriter se glisse jusqu'au bout, qui donne une animation pas cohérente
